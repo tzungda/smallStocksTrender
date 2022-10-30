@@ -14,4 +14,4 @@ Display some statistical data if the given stocks
 
 # Future work
 - clean the code
-- create proper ui
+- create a proper ui
