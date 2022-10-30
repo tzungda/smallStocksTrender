@@ -10,7 +10,7 @@ Display some statistical data if the given stocks
 - the result will be displayed to the browser
 
 # Example
-![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example01.png)
+![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example02.png)
 
 # Future Work
 - clean and modularize the code
