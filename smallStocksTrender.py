@@ -18,7 +18,8 @@ market_period = input("Period( eg.2y ): ")
 ##################################################
 stock_data = []
 for stock_symbol in stock_symbols:
-    data = yf.download( tickers=stock_symbol, period = market_period ) 
+    stock = yf.Ticker( stock_symbol ) #yf.download( tickers=stock_symbol, period = market_period ) 
+    data=stock.history(period=market_period)
     data["50MA"]=data[["Close"]].rolling(50).mean()
     data["200MA"]=data[["Close"]].rolling(200).mean()
     stock_data.append( data )
@@ -71,7 +72,7 @@ fig = fig.update_layout(
     #xaxis2_rangeslider_visible=False,
     autosize=True,
 	width=1600,
-	height=500*stock_length
+	height=540*stock_length
 )
 
 fig.show()
