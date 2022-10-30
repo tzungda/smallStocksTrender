@@ -17,5 +17,5 @@ Display some statistical data if the given stocks
 - create a proper ui
 
 # References
-https://github.com/bhanuprathap2000/pythonprograms/blob/master/historical%20data.ipynb
-https://medium.datadriveninvestor.com/how-to-generate-a-graph-for-a-stock-price-with-python-yahoo-finance-and-plotly-7f3a36f5ce7e
+- https://github.com/bhanuprathap2000/pythonprograms/blob/master/historical%20data.ipynb
+- https://medium.datadriveninvestor.com/how-to-generate-a-graph-for-a-stock-price-with-python-yahoo-finance-and-plotly-7f3a36f5ce7e
