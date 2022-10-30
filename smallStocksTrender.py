@@ -6,7 +6,7 @@ import yfinance as yf
 ##################################################
 input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ ): ")
 input_symbols = input_symbols.upper()
-print( "symbols: " + input_symbols + "\n" )
+print( f"symbols: {input_symbols} \n" )
 #eg. QQQ,AMZN,AMGN,AAPL,VOO,HON
 stock_symbols = input_symbols.replace(' ', '').split(',')
 
@@ -32,8 +32,8 @@ for i in range( 0, stock_length ):
     row_width_list.append( 0.2 )
     row_width_list.append( 0.7 )
     #
-    subplot_title_list.append( stock_symbols[i] + ': ' + market_period)
-    subplot_title_list.append( stock_symbols[i] + ' volume' )
+    subplot_title_list.append( f"{stock_symbols[i]}:  {market_period}")
+    subplot_title_list.append( f"{stock_symbols[i]} volume" )
 
 
 ##################################################
@@ -42,7 +42,7 @@ ind = 0
 fig = make_subplots(rows = stock_length*2, cols=1, shared_xaxes=False, vertical_spacing=0.02, row_width=tuple( row_width_list ), subplot_titles=tuple( subplot_title_list )  )
 for data in stock_data:
     sub_fig = make_subplots(rows=2, cols=1, shared_xaxes=False, vertical_spacing=0.02) 
-    candlestick = go.Candlestick( x=data.index, open = data['Open'], high=data['High'], low=data['Low'], close=data['Close'], name = stock_symbols[ind] + ' market data' )
+    candlestick = go.Candlestick( x=data.index, open = data['Open'], high=data['High'], low=data['Low'], close=data['Close'], name = f"{stock_symbols[ind]} market data" )
     ind = ind + 1
     bar = go.Bar(x=data.index, y=data['Volume'], showlegend=False, marker_color='rgba(0, 0, 255, 1)')
     #
