@@ -8,7 +8,7 @@ input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ ): ")
 input_symbols = input_symbols.upper()
 print( f"symbols: {input_symbols} \n" )
 #eg. QQQ,AMZN,AMGN,AAPL,VOO,HON
-stock_symbols = input_symbols.replace(' ', '').split(',')
+temp_stock_symbols = input_symbols.replace(' ', '').split(',')
 
 
 ##################################################
@@ -17,13 +17,21 @@ market_period = input("Period( eg.2y ): ")
 
 ##################################################
 stock_data = []
-for stock_symbol in stock_symbols:
+stock_symbols = []
+for stock_symbol in temp_stock_symbols:
     stock = yf.Ticker( stock_symbol ) #yf.download( tickers=stock_symbol, period = market_period ) 
-    data=stock.history(period=market_period)
+    #
+    print(f"Getting history of {stock_symbol} \n")
+    data = stock.history(period=market_period)
     data["50MA"]=data[["Close"]].rolling(50).mean()
     data["200MA"]=data[["Close"]].rolling(200).mean()
     stock_data.append( data )
+	#
+    stock_symbols.append( stock_symbol )
 
+if not stock_symbols:
+    print( "No Stock data to process" )
+    exit()
 
 ##################################################	
 stock_length = len( stock_data )
