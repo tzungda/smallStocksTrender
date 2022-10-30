@@ -13,7 +13,7 @@ Display some statistical data if the given stocks
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example01.png)
 
 # Future Work
-- clean the code
+- clean and modularize the code
 - create a proper ui
 
 # References
