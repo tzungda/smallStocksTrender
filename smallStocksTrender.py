@@ -42,15 +42,15 @@ row_index = 1
 ind = 0
 fig = make_subplots(rows = stock_length*2, cols=1, shared_xaxes=False, vertical_spacing=0.02, row_width=tuple( row_width_list ), subplot_titles=tuple( subplot_title_list )  )
 for data in stock_data:
-    sub_fig = make_subplots(rows=2, cols=1, shared_xaxes=False, vertical_spacing=0.02) 
+    sub_fig = make_subplots(shared_xaxes=False, vertical_spacing=0.02) 
     candlestick = go.Candlestick( x=data.index, open = data['Open'], high=data['High'], low=data['Low'], close=data['Close'], name = f"{stock_symbols[ind]} market data" )
     ind = ind + 1
     bar = go.Bar(x=data.index, y=data['Volume'], showlegend=False, marker_color='rgba(0, 0, 255, 1)')
     #
-    sub_fig.add_trace(candlestick, row= 1, col=1)
-    sub_fig.add_trace( go.Scatter(x=data["50MA"].index, y=data["50MA"].values, mode='lines', name='50MA', marker_color='rgba(200, 200, 255, 1)'), row= 1, col=1)
-    sub_fig.add_trace( go.Scatter(x=data["200MA"].index, y=data["200MA"].values, mode='lines', name='200MA', marker_color='rgba(255, 200, 200, 1)'), row= 1, col=1)
-    sub_fig.add_trace(bar, row= 2, col=1)
+    sub_fig.add_trace(candlestick)
+    sub_fig.add_trace( go.Scatter(x=data["50MA"].index, y=data["50MA"].values, mode='lines', name='50MA', marker_color='rgba(200, 200, 255, 1)') )
+    sub_fig.add_trace( go.Scatter(x=data["200MA"].index, y=data["200MA"].values, mode='lines', name='200MA', marker_color='rgba(255, 200, 200, 1)') )
+    sub_fig.add_trace(bar)
     sub_fig.update_layout( xaxis_rangeslider_visible=False) 
     sub_fig.update_xaxes( rangeslider_visible=False )
 	#
