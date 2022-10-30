@@ -12,6 +12,6 @@ Display some statistical data if the given stocks
 # Example
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example01.png)
 
-# Future work
+# Future Work
 - clean the code
 - create a proper ui
