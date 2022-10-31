@@ -7,7 +7,7 @@ import datetime
 import math
 
 ##################################################
-input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ or SP500 for S&P500 stocks: ")
+input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ or SP500 for S&P500 stocks, and SPTSX for S&P/TSX(Canada): ")
 input_symbols = input_symbols.upper()
 input_symbols.replace(' ', '')
 print( f"symbols: {input_symbols} \n" )
@@ -19,8 +19,8 @@ start_sp500_index = 0
 is_compare_200_average = 'Y'
 is_compare_50_average = 'N'
 compare_num_days = 40
-if input_symbols == 'SP500':
-    tmp = input("Start index of SP500: ")
+if input_symbols == 'SP500' or input_symbols == 'SPTSX':
+    tmp = input(f"Start index of {input_symbols}: ")
     start_sp500_index = int( tmp )
     #
     is_compare_200_average = input("Compare 200-day average(Y or N): ")
@@ -43,13 +43,24 @@ if ( is_compare_50_average == 'Y' ):
 
 ##################################################
 temp_stock_symbols = []
-if input_symbols == 'SP500':
-    resp = requests.get('http://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+sp_link = 'http://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
+if (input_symbols == 'SPTSX'):
+    sp_link = 'https://en.wikipedia.org/wiki/S%26P/TSX_Composite_Index'
+if input_symbols == 'SP500' or input_symbols == 'SPTSX':
+    
+    resp = requests.get( sp_link )
     soup = bs.BeautifulSoup(resp.text, 'lxml')
-    table = soup.find('table', {'class': 'wikitable sortable'})
+    table = None
+    if ( input_symbols == 'SP500' ):
+        table = soup.find('table', {'class': 'wikitable sortable'})
+    if ( input_symbols == 'SPTSX' ):
+        table = soup.find_all('table', {'class': 'wikitable sortable'})[1]
+        
     for row in table.findAll('tr')[1:]:
         ticker = row.findAll('td')[0].text
         ticker = ticker.replace('\n', '' )
+        if ( input_symbols == 'SPTSX' ):
+            ticker = ticker + '.TO'
         temp_stock_symbols.append(ticker)
         
     
@@ -82,8 +93,10 @@ for stock_symbol in temp_stock_symbols:
     if ( symbol_index > max_num ):
         break
     #
-    if input_symbols == 'SP500':
+    if input_symbols == 'SP500' or input_symbols == 'SPTSX':
         close_sum = math.fsum( data['Close'][-compare_num_days:] )
+        if ( close_sum < 0.01 ):
+            continue
         #
         if ( is_compare_200_average == 'Y' ):
             m200_sum = math.fsum( data['200MA'][-compare_num_days:] )
