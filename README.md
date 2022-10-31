@@ -6,6 +6,7 @@ Display some statistical data if the given stocks
 - pip install the needed Python packages: yfinance and plotly
 - run the smallStocksTrender.py in terminal or command prompt
 - type stock symbols( eg. VOO,AAPL,GOOG,QQQ )
+- or type SP500 and its following conditions for filtering the stocks
 - type period( eg. 2y )
 - the result will be displayed to the browser
 
