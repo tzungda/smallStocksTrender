@@ -19,7 +19,7 @@ start_sp500_index = 0
 is_compare_200_average = 'Y'
 is_compare_50_average = 'N'
 compare_num_days = 40
-if input_symbols == 'SP500' or input_symbols == 'SPTSX':
+if input_symbols == 'SP500' or input_symbols == 'SPTSX' or input_symbols == 'TW50_100':
     tmp = input(f"Start index of {input_symbols}: ")
     start_sp500_index = int( tmp )
     #
@@ -40,12 +40,29 @@ if input_symbols == 'SP500' or input_symbols == 'SPTSX':
     if ( is_compare_50_average == 'Y' ):
         print( f"-->Compare the 50-day average" )
 
-
+##################################################
+def get_taiwan_symbols( tw_link ):
+    resp = requests.get( tw_link )
+    soup = bs.BeautifulSoup(resp.text, 'lxml')
+    table = soup.find_all('table', {'class': 'TableBorder'} )[0]
+    stock_symbols_tw = []
+    for row in table.findAll('tr')[1:]:
+        for td_row in row.findAll('td'):
+            ticker = td_row.text.encode('utf-8')
+            if ( len(ticker) >= 4 ):
+                t = ticker[0:4]
+                if ( t.isdigit() ):
+                    stock_symbols_tw.append( t.decode("utf-8") + '.TW' )
+    return stock_symbols_tw
+                    
 ##################################################
 temp_stock_symbols = []
 sp_link = 'http://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
 if (input_symbols == 'SPTSX'):
     sp_link = 'https://en.wikipedia.org/wiki/S%26P/TSX_Composite_Index'
+if (input_symbols == 'TW50_100' ):
+    sp_link = 'http://moneydj.emega.com.tw/js/T50_100.htm'
+#
 if input_symbols == 'SP500' or input_symbols == 'SPTSX':
     
     resp = requests.get( sp_link )
@@ -60,13 +77,14 @@ if input_symbols == 'SP500' or input_symbols == 'SPTSX':
         ticker = row.findAll('td')[0].text
         ticker = ticker.replace('\n', '' )
         if ( input_symbols == 'SPTSX' ):
-            ticker = ticker + '.TO'
-        temp_stock_symbols.append(ticker)
-        
-    
+            if ( ticker.find('.') == -1 ):
+                ticker = ticker + '.TO'
+        temp_stock_symbols.append(ticker)    
+elif (input_symbols == 'TW50_100'):
+    print(f"Getting Taiwanese stocks")
+    temp_stock_symbols = get_taiwan_symbols( sp_link )
 else:
     temp_stock_symbols = input_symbols.split(',')
-    end_ind = len( temp_stock_symbols )
 
 
 ##################################################
@@ -93,7 +111,7 @@ for stock_symbol in temp_stock_symbols:
     if ( symbol_index > max_num ):
         break
     #
-    if input_symbols == 'SP500' or input_symbols == 'SPTSX':
+    if input_symbols == 'SP500' or input_symbols == 'SPTSX' or input_symbols == 'TW50_100':
         close_sum = math.fsum( data['Close'][-compare_num_days:] )
         if ( close_sum < 0.01 ):
             continue
