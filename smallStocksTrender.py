@@ -86,7 +86,7 @@ for stock_symbol in temp_stock_symbols:
     #
     print(f"Getting history of {stock_symbol} [{temp_stock_symbol_index + 1}/{len(temp_stock_symbols)}]")
     temp_stock_symbol_index = temp_stock_symbol_index + 1
-    data = stock.history(period=market_period)
+    data = stock.history(period=market_period, interval='1d')
     data["50MA"]=data[["Close"]].rolling(50).mean()
     data["200MA"]=data[["Close"]].rolling(200).mean()
     
