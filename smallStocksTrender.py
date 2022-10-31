@@ -31,14 +31,14 @@ if input_symbols == 'SP500' or input_symbols == 'SPTSX':
     #
     print(f"-->Maximum of filtered stocks is {max_num}")
     
-if ( is_compare_200_average != 'Y' and  is_compare_50_average != 'Y' ):
-    print(f"-->Both 200-day and 50-day are not Y, set to compare the 200-day")
-    is_compare_200_average = 'Y'
+    if ( is_compare_200_average != 'Y' and  is_compare_50_average != 'Y' ):
+        print(f"-->Both 200-day and 50-day are not Y, set to compare the 200-day")
+        is_compare_200_average = 'Y'
     
-if ( is_compare_200_average == 'Y' ):
-    print( f"-->Compare the 200-day average" )
-if ( is_compare_50_average == 'Y' ):
-    print( f"-->Compare the 50-day average" )
+    if ( is_compare_200_average == 'Y' ):
+        print( f"-->Compare the 200-day average" )
+    if ( is_compare_50_average == 'Y' ):
+        print( f"-->Compare the 50-day average" )
 
 
 ##################################################
