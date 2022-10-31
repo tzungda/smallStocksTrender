@@ -14,7 +14,7 @@ Display some statistical data if the given stocks
 1) Display the input stock symbols:
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example02.png)
 
-2) Filter TSX(Canada) stocks based on comparing the closed prices and 200/50-day averages within the given days(eg.40)
+2) Filter TSX(Canada) stocks based on comparing the closed prices and 200/50-day averages within the given days(eg. 40 days)
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example_tsx.png)
 
 # Future Work
