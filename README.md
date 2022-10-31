@@ -11,7 +11,10 @@ Display some statistical data if the given stocks
 - the result will be displayed to the browser
 
 # Example
+1) Display the input stock symbols:
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example02.png)
+
+2) Filter TSX(Canada) stocks based on comparing the closed prices and 200/50-day averages within the given days(eg.40)
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example_tsx.png)
 
 # Future Work
