@@ -7,7 +7,7 @@ import datetime
 import math
 
 ##################################################
-input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ or SP500 for S&P500 stocks, and SPTSX for S&P/TSX(Canada): ")
+input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ ) or SP500 for S&P500 stocks, and SPTSX for S&P/TSX(Canada): ")
 input_symbols = input_symbols.upper()
 input_symbols.replace(' ', '')
 print( f"symbols: {input_symbols} \n" )
