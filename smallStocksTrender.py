@@ -88,8 +88,9 @@ else:
 
 
 ##################################################
-market_period = input("Period( eg.2y ): ")
-
+market_period = input("Days of Period( eg.300d ): ")
+market_period_200 = int(market_period.replace('d', ''))
+market_period_200 = str( market_period_200 + 200 ) + 'd'
 
 ##################################################
 stock_data = []
@@ -106,8 +107,9 @@ for stock_symbol in temp_stock_symbols:
     print(f"Getting history of {stock_symbol} [{temp_stock_symbol_index + 1}/{len(temp_stock_symbols)}]")
     temp_stock_symbol_index = temp_stock_symbol_index + 1
     data = stock.history(period=market_period, interval='1d')
-    data["50MA"]=data[["Close"]].rolling(50).mean()
-    data["200MA"]=data[["Close"]].rolling(200).mean()
+    data_200 = stock.history(period=market_period_200, interval='1d')
+    data_200["50MA"]=data_200[["Close"]].rolling(50).mean()
+    data_200["200MA"]=data_200[["Close"]].rolling(200).mean()
     
     if ( symbol_index > max_num ):
         break
@@ -125,11 +127,11 @@ for stock_symbol in temp_stock_symbols:
             continue
         #
         if ( is_compare_200_average == 'Y' ):
-            m200_sum = math.fsum( list( data['200MA'].values[-compare_num_days:] ) )
+            m200_sum = math.fsum( list( data_200['200MA'].values[-compare_num_days:] ) )
             if( m200_sum > close_sum ):
                 continue
         if ( is_compare_50_average == 'Y' ):
-            m50_sum = math.fsum( list( data['50MA'].values[-compare_num_days:] ) )
+            m50_sum = math.fsum( list( data_200['50MA'].values[-compare_num_days:] ) )
             if( m50_sum > close_sum ):
                 continue
         #
@@ -175,8 +177,12 @@ for i in range( 0, stock_data_len):
     bar = plotly.graph_objs.Bar(x=data.index, y=data['Volume'], showlegend=False, marker_color='rgba(0, 0, 255, 1)')
     #
     sub_fig.add_trace(candlestick)
-    sub_fig.add_trace( plotly.graph_objs.Scatter(x=data["50MA"].index, y=data["50MA"].values, mode='lines', name='50MA', marker_color='rgba(200, 200, 255, 1)') )
-    sub_fig.add_trace( plotly.graph_objs.Scatter(x=data["200MA"].index, y=data["200MA"].values, mode='lines', name='200MA', marker_color='rgba(255, 200, 200, 1)') )
+    #data_50_index = data_200["50MA"].index[200:]
+    #data_200_index = data_200["200MA"].index[200:]
+    data_50_values = data_200["50MA"].values[200:]
+    data_200_values = data_200["200MA"].values[200:]
+    sub_fig.add_trace( plotly.graph_objs.Scatter(x=data.index, y=data_50_values, mode='lines', name='50MA', marker_color='rgba(200, 200, 255, 1)') )
+    sub_fig.add_trace( plotly.graph_objs.Scatter(x=data.index, y=data_200_values, mode='lines', name='200MA', marker_color='rgba(255, 200, 200, 1)') )
     sub_fig.add_trace(bar)
     sub_fig.update_layout( xaxis_rangeslider_visible=False) 
     sub_fig.update_xaxes( rangeslider_visible=False )
@@ -205,4 +211,3 @@ fig = fig.update_layout(
 )
 
 fig.show()
-
