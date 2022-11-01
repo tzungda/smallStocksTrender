@@ -7,7 +7,7 @@ import datetime
 import math
 
 ##################################################
-input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ ) or SP500 for S&P500 stocks, and SPTSX for S&P/TSX(Canada): ")
+input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ ), or SP500 for S&P500 stocks, or SPTSX for S&P/TSX(Canada), or TW50_100 for Taiwan stocks(testing) : \n")
 input_symbols = input_symbols.upper()
 input_symbols.replace(' ', '')
 print( f"symbols: {input_symbols} \n" )
@@ -96,6 +96,7 @@ stock_data = []
 stock_symbols = []
 symbol_index = 1
 temp_stock_symbol_index = 0
+compare_num_days_half = int(compare_num_days/2)
 for stock_symbol in temp_stock_symbols:
     if (  temp_stock_symbol_index < start_sp500_index ):
         temp_stock_symbol_index = temp_stock_symbol_index + 1
@@ -112,16 +113,23 @@ for stock_symbol in temp_stock_symbols:
         break
     #
     if input_symbols == 'SP500' or input_symbols == 'SPTSX' or input_symbols == 'TW50_100':
-        close_sum = math.fsum( data['Close'][-compare_num_days:] )
+        close_sum = math.fsum( list( data['Close'].values[-compare_num_days:] ) )
         if ( close_sum < 0.01 ):
+            continue
+        close_sum_second = math.fsum( list( data['Close'].values[-compare_num_days_half:] ) )
+        #
+        close_sum_first = math.fsum( list(data['Close'].values[-compare_num_days:-compare_num_days_half]) )
+        #print(f" ***** close_sum_first = {close_sum_first}" )
+        #print(f" ***** close_sum_second = {close_sum_second}" )
+        if (close_sum_second < close_sum_first ):
             continue
         #
         if ( is_compare_200_average == 'Y' ):
-            m200_sum = math.fsum( data['200MA'][-compare_num_days:] )
+            m200_sum = math.fsum( list( data['200MA'].values[-compare_num_days:] ) )
             if( m200_sum > close_sum ):
                 continue
         if ( is_compare_50_average == 'Y' ):
-            m50_sum = math.fsum( data['50MA'][-compare_num_days:] )
+            m50_sum = math.fsum( list( data['50MA'].values[-compare_num_days:] ) )
             if( m50_sum > close_sum ):
                 continue
         #
@@ -192,6 +200,7 @@ fig = fig.update_layout(
     #xaxis2_rangeslider_visible=False,
     autosize=True,
 	width=1600,
+    paper_bgcolor='rgba(180,180,180,1)',
 	height=540*stock_length
 )
 
