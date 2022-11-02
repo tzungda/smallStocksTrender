@@ -94,6 +94,7 @@ market_period_200 = str( market_period_200 + 200 ) + 'd'
 
 ##################################################
 stock_data = []
+stock_data_200 = []
 stock_symbols = []
 symbol_index = 1
 temp_stock_symbol_index = 0
@@ -139,6 +140,7 @@ for stock_symbol in temp_stock_symbols:
     #
     symbol_index = symbol_index + 1
     
+    stock_data_200.append( data_200 )
     stock_data.append( data )
 	#
     stock_symbols.append( stock_symbol )
@@ -170,6 +172,7 @@ stock_data_len = len( stock_data )
 fig = make_subplots(rows = stock_length*2, cols=1, shared_xaxes=False, vertical_spacing=vertical_spacing_value, row_width=tuple( row_width_list ), subplot_titles=tuple( subplot_title_list )  )
 for i in range( 0, stock_data_len):
     data = stock_data[i]
+    data_200 = stock_data_200[i]
     print( f"Processing figure of stock data {ind+1}/{stock_data_len}" )
     sub_fig = make_subplots(shared_xaxes=False, vertical_spacing=0.02) 
     candlestick = plotly.graph_objs.Candlestick( x=data.index, open = data['Open'], high=data['High'], low=data['Low'], close=data['Close'], name = f"{stock_symbols[ind]} market data" )
