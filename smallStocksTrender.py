@@ -5,6 +5,8 @@ import requests
 import yfinance as yf
 import datetime
 import math
+from threading import Thread
+import pandas as pd
 
 ##################################################
 input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ ), or SP500 for S&P500 stocks, or SPTSX for S&P/TSX(Canada), or TW50_100 for Taiwan stocks(testing) : \n")
@@ -95,6 +97,7 @@ market_period_200 = str( market_period_200 + 200 ) + 'd'
 ##################################################
 stock_data = []
 stock_data_200 = []
+stocks = []
 stock_symbols = []
 symbol_index = 1
 temp_stock_symbol_index = 0
@@ -142,6 +145,7 @@ for stock_symbol in temp_stock_symbols:
     
     stock_data_200.append( data_200 )
     stock_data.append( data )
+    stocks.append( stock )
 	#
     stock_symbols.append( stock_symbol )
 
@@ -150,15 +154,23 @@ if not stock_symbols:
     exit()
 
 ##################################################	
+num_traces = 3
 stock_length = len( stock_data )
 row_width_list = []
+row_height_list = []
 subplot_title_list = []
 for i in range( 0, stock_length ):
     row_width_list.append( 0.2 )
-    row_width_list.append( 0.7 )
+    row_width_list.append( 0.4 )
+    row_width_list.append( 0.3 )
+    #
+    #row_height_list.append( 300 )
+    #row_height_list.append( 100 )
+    #row_height_list.append( 200 )
     #
     subplot_title_list.append( f"{stock_symbols[i]}:  {market_period}")
     subplot_title_list.append( f"{stock_symbols[i]} volume" )
+    subplot_title_list.append( f"{stock_symbols[i]} EPS" )
 
 
 ##################################################
@@ -167,16 +179,42 @@ ind = 0
 vertical_spacing_value = 0.01#(float)(1/ (len(temp_stock_symbols) * 2 - 1 ))
 print(f"--Spacing = {vertical_spacing_value}")
 
+#########################
+no_earnings_history = False
 #
+earnings_history_list = [pd.DataFrame() for s in stocks]
+def get_earnings_history( stock_obj, result, index):
+    if no_earnings_history: 
+        return
+    if stock_obj.earnings.empty:
+        return
+    else:
+        try:
+            result[index] = stock_obj.earnings_dates[:16]
+        except Exception as e: 
+            print('Failed get earnings: '+ str(e))
+    
+#
+threads = []
+for ii in range(len(stocks)):
+    # We start one thread per url present.
+    process = Thread(target=get_earnings_history, args=[stocks[ii], earnings_history_list, ii])
+    process.start()
+    threads.append(process)
+#
+for process in threads:
+    process.join()
+#########################
+
 stock_data_len = len( stock_data )
-fig = make_subplots(rows = stock_length*2, cols=1, shared_xaxes=False, vertical_spacing=vertical_spacing_value, row_width=tuple( row_width_list ), subplot_titles=tuple( subplot_title_list )  )
+fig = make_subplots(rows = stock_length*num_traces, cols=1, shared_xaxes=False, vertical_spacing=vertical_spacing_value, row_width=tuple( row_width_list ), subplot_titles=tuple( subplot_title_list )  )
 for i in range( 0, stock_data_len):
     data = stock_data[i]
     data_200 = stock_data_200[i]
-    print( f"Processing figure of stock data {ind+1}/{stock_data_len}" )
-    sub_fig = make_subplots(shared_xaxes=False, vertical_spacing=0.02) 
-    candlestick = plotly.graph_objs.Candlestick( x=data.index, open = data['Open'], high=data['High'], low=data['Low'], close=data['Close'], name = f"{stock_symbols[ind]} market data" )
-    ind = ind + 1
+    print( f"Processing figure of stock data {i+1}/{stock_data_len}" )
+    sub_fig = make_subplots(shared_xaxes=False, vertical_spacing=vertical_spacing_value) 
+    candlestick = plotly.graph_objs.Candlestick( x=data.index, open = data['Open'], high=data['High'], low=data['Low'], close=data['Close'], name = f"{stock_symbols[i]} market data" )
+    #ind = ind + 1
     bar = plotly.graph_objs.Bar(x=data.index, y=data['Volume'], showlegend=False, marker_color='rgba(0, 0, 255, 1)')
     #
     sub_fig.add_trace(candlestick)
@@ -187,6 +225,36 @@ for i in range( 0, stock_data_len):
     sub_fig.add_trace( plotly.graph_objs.Scatter(x=data.index, y=data_50_values, mode='lines', name='50MA', marker_color='rgba(200, 200, 255, 1)') )
     sub_fig.add_trace( plotly.graph_objs.Scatter(x=data.index, y=data_200_values, mode='lines', name='200MA', marker_color='rgba(255, 200, 200, 1)') )
     sub_fig.add_trace(bar)
+    
+    # EPS
+    e = earnings_history_list[i]
+    if not e.empty:
+        e = e.iloc[::-1]
+        e_estimate = e['EPS Estimate']
+        e_reported = e['Reported EPS']
+        sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_estimate.values, mode='lines', name='EPS Estimate', marker_color='rgba(200, 200, 0, 1)') )
+        sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_reported.values, mode='lines', name='Reported EPS', marker_color='rgba(0, 0, 200, 1)') )
+    else:
+        sub_fig.add_trace( plotly.graph_objs.Scatter(x=None, y=None, mode='lines', name='EPS Estimate', marker_color='rgba(200, 200, 0, 1)') )
+        sub_fig.add_trace( plotly.graph_objs.Scatter(x=None, y=None, mode='lines', name='Reported EPS', marker_color='rgba(0, 0, 200, 1)') )
+    #stock = stocks[i]
+    #e_date = None
+    #e_estimate = None
+    #e_reported = None
+    #if no_earnings_history or stock.earnings.empty:
+    #    sub_fig.add_trace( plotly.graph_objs.Scatter(x=None, y=None, mode='lines', name='EPS Estimate', marker_color='rgba(100, 100, 100, 1)') )
+    #    sub_fig.add_trace( plotly.graph_objs.Scatter(x=None, y=None, mode='lines', name='Reported EPS', marker_color='rgba(255, 255, 0, 1)') )
+    #else:
+    #    e = stock.earnings_dates[:10]
+    #    e = e.iloc[::-1]
+        #e_date = e['Earnings Date']
+    #    e_estimate = e['EPS Estimate']
+    #    e_reported = e['Reported EPS']
+    #    sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_estimate.values, mode='lines', name='EPS Estimate', marker_color='rgba(200, 200, 0, 1)') )
+    #    sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_reported.values, mode='lines', name='Reported EPS', marker_color='rgba(0, 0, 200, 1)') )
+        
+    
+    #
     sub_fig.update_layout( xaxis_rangeslider_visible=False) 
     sub_fig.update_xaxes( rangeslider_visible=False )
 	#
@@ -196,6 +264,9 @@ for i in range( 0, stock_data_len):
     fig = fig.add_trace(sub_fig.data[2], row=row_index, col=1)
     row_index = row_index + 1
     fig = fig.add_trace(sub_fig.data[3], row=row_index, col=1)
+    row_index = row_index + 1
+    fig = fig.add_trace(sub_fig.data[4], row=row_index, col=1)
+    fig = fig.add_trace(sub_fig.data[5], row=row_index, col=1)
     row_index = row_index + 1
 	
 
