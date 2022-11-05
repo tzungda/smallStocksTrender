@@ -7,6 +7,13 @@ import datetime
 import math
 from threading import Thread
 import pandas as pd
+#
+import stock_utils
+import importlib 
+importlib.reload( stock_utils )
+#import importlib 
+#importlib.reload( yf )
+#pip install yfinance --upgrade --no-cache-dir
 
 ##################################################
 input_symbols = input("Type stock symbols( eg. VOO,AAPL,GOOG,QQQ ), or SP500 for S&P500 stocks, or SPTSX for S&P/TSX(Canada), or TW50_100 for Taiwan stocks(testing) : \n")
@@ -183,22 +190,20 @@ print(f"--Spacing = {vertical_spacing_value}")
 no_earnings_history = False
 #
 earnings_history_list = [pd.DataFrame() for s in stocks]
-def get_earnings_history( stock_obj, result, index):
+def get_earnings_history( stock_ticker, result, index):
     if no_earnings_history: 
         return
-    if stock_obj.earnings.empty:
-        return
-    else:
-        try:
-            result[index] = stock_obj.earnings_dates[:16]
-        except Exception as e: 
-            print('Failed get earnings: '+ str(e))
+    se = stock_utils.StockEarnings(stock_ticker, 12)
+    try:
+        result[index] = se.get_earnings_dates()
+    except Exception as e: 
+        print('Failed get earnings: '+ str(e) + ': ' + stock_ticker)
     
 #
 threads = []
 for ii in range(len(stocks)):
     # We start one thread per url present.
-    process = Thread(target=get_earnings_history, args=[stocks[ii], earnings_history_list, ii])
+    process = Thread(target=get_earnings_history, args=[stock_symbols[ii], earnings_history_list, ii])
     process.start()
     threads.append(process)
 #
