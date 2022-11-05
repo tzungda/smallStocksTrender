@@ -19,6 +19,7 @@ Display some statistical data if the given stocks
 
 3) Able to display earnings
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example_earnings.png)
+![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example_earnings_02.png)
 
 # Future Work
 - clean and modularize the code
