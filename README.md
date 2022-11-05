@@ -17,6 +17,9 @@ Display some statistical data if the given stocks
 2) Filter TSX(Canada) stocks based on comparing the closed prices and 200/50-day averages within the given days(eg. 40 days)
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example_tsx.png)
 
+3) Able to display earnings
+![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example_earnings.png)
+
 # Future Work
 - clean and modularize the code
 - create a proper ui
