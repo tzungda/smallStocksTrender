@@ -167,15 +167,15 @@ row_width_list = []
 row_height_list = []
 subplot_title_list = []
 for i in range( 0, stock_length ):
-    row_width_list.append( 0.2 )
-    row_width_list.append( 0.4 )
-    row_width_list.append( 0.3 )
+    #row_width_list.append( 0.2 )
+    #row_width_list.append( 0.4 )
+    #row_width_list.append( 0.3 )
     #
-    #row_height_list.append( 300 )
-    #row_height_list.append( 100 )
-    #row_height_list.append( 200 )
+    row_height_list.append( 0.6 )
+    row_height_list.append( 0.2 )
+    row_height_list.append( 0.2 )
     #
-    subplot_title_list.append( f"{stock_symbols[i]}:  {market_period}")
+    subplot_title_list.append( f"********************{stock_symbols[i]}:  {market_period}********************")
     subplot_title_list.append( f"{stock_symbols[i]} volume" )
     subplot_title_list.append( f"{stock_symbols[i]} EPS" )
 
@@ -183,9 +183,9 @@ for i in range( 0, stock_length ):
 ##################################################
 row_index = 1
 ind = 0
-vertical_spacing_value = 0.01#(float)(1/ (len(temp_stock_symbols) * 2 - 1 ))
+vertical_spacing_value = 0.009#(float)(1/ (len(temp_stock_symbols) * 2 - 1 ))
 print(f"--Spacing = {vertical_spacing_value}")
-
+print(f"--Started to get earnings")
 #########################
 no_earnings_history = False
 #
@@ -212,7 +212,7 @@ for process in threads:
 #########################
 
 stock_data_len = len( stock_data )
-fig = make_subplots(rows = stock_length*num_traces, cols=1, shared_xaxes=False, vertical_spacing=vertical_spacing_value, row_width=tuple( row_width_list ), subplot_titles=tuple( subplot_title_list )  )
+fig = make_subplots(rows = stock_length*num_traces, cols=1, shared_xaxes=False, vertical_spacing=vertical_spacing_value, row_heights=row_height_list, subplot_titles=tuple( subplot_title_list )   )
 for i in range( 0, stock_data_len):
     data = stock_data[i]
     data_200 = stock_data_200[i]
@@ -237,8 +237,8 @@ for i in range( 0, stock_data_len):
         e = e.iloc[::-1]
         e_estimate = e['EPS Estimate']
         e_reported = e['Reported EPS']
-        sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_estimate.values, mode='lines', name='EPS Estimate', marker_color='rgba(200, 200, 0, 1)') )
-        sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_reported.values, mode='lines', name='Reported EPS', marker_color='rgba(0, 0, 200, 1)') )
+        sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_estimate.values, mode='lines', name='EPS Estimate', marker_color='rgba(190, 190, 190, 1)') )
+        sub_fig.add_trace( plotly.graph_objs.Scatter(x=e.index, y=e_reported.values, mode='lines', name='Reported EPS', marker_color='rgba(50, 50, 50, 1)') )
     else:
         sub_fig.add_trace( plotly.graph_objs.Scatter(x=None, y=None, mode='lines', name='EPS Estimate', marker_color='rgba(200, 200, 0, 1)') )
         sub_fig.add_trace( plotly.graph_objs.Scatter(x=None, y=None, mode='lines', name='Reported EPS', marker_color='rgba(0, 0, 200, 1)') )
@@ -273,6 +273,8 @@ for i in range( 0, stock_data_len):
     fig = fig.add_trace(sub_fig.data[4], row=row_index, col=1)
     fig = fig.add_trace(sub_fig.data[5], row=row_index, col=1)
     row_index = row_index + 1
+    #
+
 	
 
 ##################################################
