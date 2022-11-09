@@ -1,3 +1,9 @@
+References:
+https://www.investopedia.com/terms/s/sector-etf.asp
+https://money.usnews.com/investing/stock-market-news/slideshows/top-stocks-to-buy-in-different-sectors
+
+ETFs:
+/*------------------------------------------------------------
 Energy: XLE 
 Materials: XLB 
 Industrials: XLI 
@@ -9,7 +15,10 @@ Information Technology: SMH
 Communication Services: XTL 
 Utilities: XLU 
 Real Estate: IYR 
+------------------------------------------------------------*/
 
+Leaders:
+/*------------------------------------------------------------
 Information technology: Microsoft Corp. (MSFT)
 Consumer discretionary: Amazon.com Inc. (AMZN)
 Communication services: Meta Platforms Inc. (META)
@@ -21,3 +30,4 @@ Energy: Schlumberger Ltd. (SLB)
 Materials: Nutrien Ltd. (NTR)
 Real estate: SBA Communications Corp. (SBAC)
 Utilities: NextEra Energy Inc. (NEE)
+------------------------------------------------------------*/
