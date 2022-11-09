@@ -1,0 +1,23 @@
+Energy: XLE 
+Materials: XLB 
+Industrials: XLI 
+Consumer Discretionary: XLY 
+Consumer Staples: XLP 
+Health Care: XLV 
+Financials: XLF 
+Information Technology: SMH 
+Communication Services: XTL 
+Utilities: XLU 
+Real Estate: IYR 
+
+Information technology: Microsoft Corp. (MSFT)
+Consumer discretionary: Amazon.com Inc. (AMZN)
+Communication services: Meta Platforms Inc. (META)
+Health care: Pfizer Inc. (PFE)
+Consumer staples: Coca-Cola Co. (KO)
+Financials: PayPal Holdings Inc. (PYPL)
+Industrials: Northrop Grumman Corp. (NOC)
+Energy: Schlumberger Ltd. (SLB)
+Materials: Nutrien Ltd. (NTR)
+Real estate: SBA Communications Corp. (SBAC)
+Utilities: NextEra Energy Inc. (NEE)
