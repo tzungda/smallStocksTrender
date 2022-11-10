@@ -1,33 +1,90 @@
 References:
 https://www.investopedia.com/terms/s/sector-etf.asp
 https://money.usnews.com/investing/stock-market-news/slideshows/top-stocks-to-buy-in-different-sectors
+https://www.fool.com/investing/stock-market/market-sectors/
+https://www.nasdaq.com/articles/the-11-sectors-of-the-stock-market-their-biggest-etfs-2021-05-30
+
 
 ETFs:
 /*------------------------------------------------------------
-Energy: XLE 
-Materials: XLB 
-Industrials: XLI 
-Consumer Discretionary: XLY 
-Consumer Staples: XLP 
-Health Care: XLV 
-Financials: XLF 
-Information Technology: SMH 
-Communication Services: XTL 
-Utilities: XLU 
-Real Estate: IYR 
+1. Technology
+Technology Select Sector SPDR Fund (NYSEARCA: XLK)
+Vanguard Information Tech ETF (NYSEARCA: VGT)
+First Trust Dow Jones Internet Index (NYSEARCA: FDN)
+iShares U.S. Technology ETF (NYSEARCA: IYW)
+
+2. Health Care
+Health Care Select Sector SPDR Fund (NYSEARCA: XLV)
+Vanguard Healthcare ETF (NYSEARCA: VHT)
+iShares Nasdaq Biotechnology ETF (NASDAQ: IBB)
+iShares U.S. Medical Devices ETF (NYSEARCA: IHI)
+
+3. Financials
+Financial Select Sector SPDR (NYSEARCA: XLF)
+Vanguard Financials ETF (NYSEARCA: VFH)
+SPDR S&P Regional Banking ETF (NYSEARCA: KRE)
+SPDR S&P Bank ETF (NYSEARCA: KBE)
+
+4. Real Estate
+Vanguard Global Real Estate Index Fund ETF (NYSEARCA: VNQ)
+Schwab US REIT ETF (NYSEARCA: SCHH)
+iShares U.S. Real Estate ETF (NYSEARCA: IYR)
+Real Estate Select Sector SPDR Fund (NYSEARCA: XLRE)
+
+5. Energy
+Energy Select Sector SPDR Fund (NYSEARCA: XLE)
+Alerian MLP ETF (NYSEARCA: AMLP)
+Vanguard Energy Index Fund ETF (NYSEARCA: VDE)
+iShares Global Clean Energy ETF (NASDAQ: ICLN)
+
+6. Materials
+VanEck Vectors Gold Miners ETF (NYSEARCA: GDX)
+Materials Select Sector SPDR ETF (NYSEARCA: XLB)
+VanEck Vectors Junior Gold Miners ETF (NYSEARCA: GDXJ)
+Vanguard Materials ETF (NYSEARCA: VAW)
+
+7. Consumer Discretionary 
+Consumer Discretionary Select Sector SPDR Fund (NYSEARCA: XLY)
+Vanguard Consumer Discretionary ETF (NYSEARCA: VCR)
+Fidelity MSCI Consumer Discretionary Index ETF (NYSEARCA: FDIS)
+SPDR S&P Homebuilders ETF (NYSEARCA: XHB)
+
+8. Industrials
+SPDR Dow Jones Industrial Average ETF Trust (NYSEARCA: DIA)
+Industrial Select Sector SPDR Fund (NYSEARCA: XLI)
+SPDR S&P Aerospace & Defense ETF (NYSEARCA: XAR)
+Vanguard Industrials Index Fund ETF (NYSEARCA: VIS)
+
+9. Utilities
+Utilities Select Sector SPDR Fund (NYSEARCA: XLU)
+Vanguard Utilities ETF (NYSEARCA: VPU)
+iShares U.S. Utilities ETF (NYSEARCA: IDU)
+Fidelity MSCI Utilities Index ETF (NYSEARCA: FUTY)
+
+10. Consumer Staples
+Consumer Staples Select Sector SPDR Fund (NYSEARCA: XLP)
+Vanguard Consumer Staples ETF (NYSEARCA: VDC)
+iShares Global Consumer Staples ETF (NYSEARCA: KXI)
+VanEck Vectors Agribusiness ETF (NYSEARCA: MOO)
+
+11. Telecommunication
+Communication Services Select Sector SPDR Fund (NYSEARCA: XLC)
+Vanguard Communication Services ETF (NYSEARCA: VOX)
+Fidelity MSCI Communication Services Index ETF (NYSEARCA: FCOM)
+iShares Global Communication Services ETF (NYSEARCA: IXP)
 ------------------------------------------------------------*/
 
 Leaders:
 /*------------------------------------------------------------
-Information technology: Microsoft Corp. (MSFT)
-Consumer discretionary: Amazon.com Inc. (AMZN)
-Communication services: Meta Platforms Inc. (META)
-Health care: Pfizer Inc. (PFE)
-Consumer staples: Coca-Cola Co. (KO)
-Financials: PayPal Holdings Inc. (PYPL)
-Industrials: Northrop Grumman Corp. (NOC)
-Energy: Schlumberger Ltd. (SLB)
-Materials: Nutrien Ltd. (NTR)
-Real estate: SBA Communications Corp. (SBAC)
-Utilities: NextEra Energy Inc. (NEE)
+Information technology: Microsoft (MSFT), Apple (AAPL)
+Consumer discretionary: Amazon.com (AMZN), McDonald's (MCD)
+Communication services: Meta Platforms (META), Alphabet (GOOGL) (GOOG) 
+Health care: Pfizer (PFE), UnitedHealth Group (UNH) and Johnson & Johnson (JNJ) 
+Consumer staples: Coca-Cola (KO), Procter & Gamble (PG)
+Financials: PayPal Holdings (PYPL), Berkshire Hathaway (BRK-A) (BRK-B) and JPMorgan Chase (JPM)
+Industrials: Northrop Grumman (NOC), Boeing (BA) and Union Pacific (UNP) 
+Energy: Schlumberger (SLB), ExxonMobil (XOM) and Chevron (CVX)
+Materials: Nutrien (NTR), Sherwin-Williams (SHW) and DuPont (DD)
+Real estate: SBA Communications (SBAC), American Tower (AMT), and Simon Property Group (SPG)
+Utilities: NextEra Energy (NEE), Duke Energy (DUK), Consolidated Edison (ED), and American Electric Power (AEP)
 ------------------------------------------------------------*/
