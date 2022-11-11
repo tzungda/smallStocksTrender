@@ -7,31 +7,29 @@ https://www.nasdaq.com/articles/the-11-sectors-of-the-stock-market-their-biggest
 
 ETFs:
 /*------------------------------------------------------------
-1. Technology
+1. Technology: [XLK,VGT,FDN,IYW]
 Technology Select Sector SPDR Fund (NYSEARCA: XLK)
 Vanguard Information Tech ETF (NYSEARCA: VGT)
 First Trust Dow Jones Internet Index (NYSEARCA: FDN)
 iShares U.S. Technology ETF (NYSEARCA: IYW)
-[XLK,VGT,FDN,IYW]
 
-2. Health Care
+2. Health Care: [XLV,VHT,IBB,IHI]
 Health Care Select Sector SPDR Fund (NYSEARCA: XLV)
 Vanguard Healthcare ETF (NYSEARCA: VHT)
 iShares Nasdaq Biotechnology ETF (NASDAQ: IBB)
 iShares U.S. Medical Devices ETF (NYSEARCA: IHI)
 
-3. Financials
+3. Financials: [XLF,VFH,KRE,KBE]
 Financial Select Sector SPDR (NYSEARCA: XLF)
 Vanguard Financials ETF (NYSEARCA: VFH)
 SPDR S&P Regional Banking ETF (NYSEARCA: KRE)
 SPDR S&P Bank ETF (NYSEARCA: KBE)
 
-4. Real Estate
+4. Real Estate: [VNQ,SCHH,IYR,XLRE]
 Vanguard Global Real Estate Index Fund ETF (NYSEARCA: VNQ)
 Schwab US REIT ETF (NYSEARCA: SCHH)
 iShares U.S. Real Estate ETF (NYSEARCA: IYR)
 Real Estate Select Sector SPDR Fund (NYSEARCA: XLRE)
-[VNQ,SCHH,IYR,XLRE]
 
 5. Energy: [XLE,AMLP,VDE,ICLN]
 Energy Select Sector SPDR Fund (NYSEARCA: XLE)
