@@ -12,6 +12,7 @@ Technology Select Sector SPDR Fund (NYSEARCA: XLK)
 Vanguard Information Tech ETF (NYSEARCA: VGT)
 First Trust Dow Jones Internet Index (NYSEARCA: FDN)
 iShares U.S. Technology ETF (NYSEARCA: IYW)
+[XLK,VGT,FDN,IYW]
 
 2. Health Care
 Health Care Select Sector SPDR Fund (NYSEARCA: XLV)
@@ -30,44 +31,45 @@ Vanguard Global Real Estate Index Fund ETF (NYSEARCA: VNQ)
 Schwab US REIT ETF (NYSEARCA: SCHH)
 iShares U.S. Real Estate ETF (NYSEARCA: IYR)
 Real Estate Select Sector SPDR Fund (NYSEARCA: XLRE)
+[VNQ,SCHH,IYR,XLRE]
 
-5. Energy
+5. Energy: [XLE,AMLP,VDE,ICLN]
 Energy Select Sector SPDR Fund (NYSEARCA: XLE)
 Alerian MLP ETF (NYSEARCA: AMLP)
 Vanguard Energy Index Fund ETF (NYSEARCA: VDE)
 iShares Global Clean Energy ETF (NASDAQ: ICLN)
 
-6. Materials
+6. Materials: [GDX,XLB,GDXJ,VAW]
 VanEck Vectors Gold Miners ETF (NYSEARCA: GDX)
 Materials Select Sector SPDR ETF (NYSEARCA: XLB)
 VanEck Vectors Junior Gold Miners ETF (NYSEARCA: GDXJ)
 Vanguard Materials ETF (NYSEARCA: VAW)
 
-7. Consumer Discretionary 
+7. Consumer Discretionary: [XLY,VCR,FDIS,XHB]
 Consumer Discretionary Select Sector SPDR Fund (NYSEARCA: XLY)
 Vanguard Consumer Discretionary ETF (NYSEARCA: VCR)
 Fidelity MSCI Consumer Discretionary Index ETF (NYSEARCA: FDIS)
 SPDR S&P Homebuilders ETF (NYSEARCA: XHB)
 
-8. Industrials
+8. Industrials: [DIA,XLI,XAR,VIS]
 SPDR Dow Jones Industrial Average ETF Trust (NYSEARCA: DIA)
 Industrial Select Sector SPDR Fund (NYSEARCA: XLI)
 SPDR S&P Aerospace & Defense ETF (NYSEARCA: XAR)
 Vanguard Industrials Index Fund ETF (NYSEARCA: VIS)
 
-9. Utilities
+9. Utilities: [XLU,VPU,IDU,FUTY]
 Utilities Select Sector SPDR Fund (NYSEARCA: XLU)
 Vanguard Utilities ETF (NYSEARCA: VPU)
 iShares U.S. Utilities ETF (NYSEARCA: IDU)
 Fidelity MSCI Utilities Index ETF (NYSEARCA: FUTY)
 
-10. Consumer Staples
+10. Consumer Staples: [XLP,VDC,KXI,MOO]
 Consumer Staples Select Sector SPDR Fund (NYSEARCA: XLP)
 Vanguard Consumer Staples ETF (NYSEARCA: VDC)
 iShares Global Consumer Staples ETF (NYSEARCA: KXI)
 VanEck Vectors Agribusiness ETF (NYSEARCA: MOO)
 
-11. Telecommunication
+11. Telecommunication: [XLC,VOX,FCOM,IXP]
 Communication Services Select Sector SPDR Fund (NYSEARCA: XLC)
 Vanguard Communication Services ETF (NYSEARCA: VOX)
 Fidelity MSCI Communication Services Index ETF (NYSEARCA: FCOM)
@@ -76,15 +78,36 @@ iShares Global Communication Services ETF (NYSEARCA: IXP)
 
 Leaders:
 /*------------------------------------------------------------
-Information technology: Microsoft (MSFT), Apple (AAPL)
-Consumer discretionary: Amazon.com (AMZN), McDonald's (MCD)
-Communication services: Meta Platforms (META), Alphabet (GOOGL) (GOOG) 
-Health care: Pfizer (PFE), UnitedHealth Group (UNH) and Johnson & Johnson (JNJ) 
-Consumer staples: Coca-Cola (KO), Procter & Gamble (PG)
-Financials: PayPal Holdings (PYPL), Berkshire Hathaway (BRK-A) (BRK-B) and JPMorgan Chase (JPM)
-Industrials: Northrop Grumman (NOC), Boeing (BA) and Union Pacific (UNP) 
-Energy: Schlumberger (SLB), ExxonMobil (XOM) and Chevron (CVX)
-Materials: Nutrien (NTR), Sherwin-Williams (SHW) and DuPont (DD)
-Real estate: SBA Communications (SBAC), American Tower (AMT), and Simon Property Group (SPG)
-Utilities: NextEra Energy (NEE), Duke Energy (DUK), Consolidated Edison (ED), and American Electric Power (AEP)
+- Information technology: Microsoft (MSFT), Apple (AAPL)
+[MSFT,AAPL]
+
+- Consumer discretionary: Amazon.com (AMZN), McDonald's (MCD)
+[AMZN,MCD]
+
+- Communication services: Meta Platforms (META), Alphabet (GOOGL) (GOOG) 
+[META,GOOG]
+
+- Health care: Pfizer (PFE), UnitedHealth Group (UNH) and Johnson & Johnson (JNJ) 
+[PFE,UNH,JNJ]
+
+- Consumer staples: Coca-Cola (KO), Procter & Gamble (PG)
+[KO,PG]
+
+- Financials: PayPal Holdings (PYPL), Berkshire Hathaway (BRK-A) (BRK-B) and JPMorgan Chase (JPM)
+[PYPL,BRK-A,BRK-B,JPM]
+
+- Industrials: Northrop Grumman (NOC), Boeing (BA) and Union Pacific (UNP) 
+[NOC,BA,UNP]
+
+- Energy: Schlumberger (SLB), ExxonMobil (XOM) and Chevron (CVX)
+[SLB,XOM,CVX]
+
+- Materials: Nutrien (NTR), Sherwin-Williams (SHW) and DuPont (DD)
+[NTR,SHW,DD]
+
+- Real estate: SBA Communications (SBAC), American Tower (AMT), and Simon Property Group (SPG)
+[SBAC,AMT,SPG]
+
+- Utilities: NextEra Energy (NEE), Duke Energy (DUK), Consolidated Edison (ED), and American Electric Power (AEP)
+[NEE,DUK,ED,AEP]
 ------------------------------------------------------------*/
