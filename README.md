@@ -10,6 +10,9 @@ Display some statistical data if the given stocks
 - type period( eg. 2y )
 - the result will be displayed to the browser
 
+# Note
+- Function of getting earnings isn't reliable, and will try to fix it
+
 # Example
 1) Display the input stock symbols:
 ![alt text](https://github.com/tzungda/smallStocksTrender/blob/main/images/example02.png)
