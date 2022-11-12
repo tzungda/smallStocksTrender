@@ -23,7 +23,7 @@ print( f"symbols: {input_symbols} \n" )
 #eg. QQQ,AMZN,AMGN,AAPL,VOO,HON
 
 ##################################################
-max_num = 25
+max_num = 20
 start_sp500_index = 0
 is_compare_200_average = 'Y'
 is_compare_50_average = 'N'
@@ -35,7 +35,7 @@ if input_symbols == 'SP500' or input_symbols == 'SPTSX' or input_symbols == 'TW5
     is_compare_200_average = input("Compare 200-day average(Y or N): ")
     is_compare_50_average = input("Compare 50-day average(Y or N): ")
     #
-    tmp = input("Compare days: ")
+    tmp = input("Compare days( eg. 40 ): ")
     compare_num_days = int( tmp )
     #
     print(f"-->Maximum of filtered stocks is {max_num}")
@@ -85,6 +85,7 @@ if input_symbols == 'SP500' or input_symbols == 'SPTSX':
     for row in table.findAll('tr')[1:]:
         ticker = row.findAll('td')[0].text
         ticker = ticker.replace('\n', '' )
+        ticker = ticker.replace('.', '-' )
         if ( input_symbols == 'SPTSX' ):
             if ( ticker.find('.') == -1 ):
                 ticker = ticker + '.TO'
@@ -97,9 +98,9 @@ else:
 
 
 ##################################################
-market_period = input("Days of Period( eg.300d ): ")
-market_period_200 = int(market_period.replace('d', ''))
-market_period_200 = str( market_period_200 + 200 ) + 'd'
+market_period = input("Days of Period( eg.260 ): ")
+market_period_200 = str( int( market_period ) + 200 ) + 'd'
+market_period = market_period + 'd'
 
 ##################################################
 stock_data = []
@@ -109,6 +110,7 @@ stock_symbols = []
 symbol_index = 1
 temp_stock_symbol_index = 0
 compare_num_days_half = int(compare_num_days/2)
+matched_index = 0
 for stock_symbol in temp_stock_symbols:
     if (  temp_stock_symbol_index < start_sp500_index ):
         temp_stock_symbol_index = temp_stock_symbol_index + 1
@@ -129,6 +131,11 @@ for stock_symbol in temp_stock_symbols:
         close_sum = math.fsum( list( data['Close'].values[-compare_num_days:] ) )
         if ( close_sum < 0.01 ):
             continue
+            
+        # for the new high
+        if ( data['Close'].values[-1] < data['Close'].values.max() ):
+            continue
+        
         close_sum_second = math.fsum( list( data['Close'].values[-compare_num_days_half:] ) )
         #
         close_sum_first = math.fsum( list(data['Close'].values[-compare_num_days:-compare_num_days_half]) )
@@ -146,7 +153,8 @@ for stock_symbol in temp_stock_symbols:
             if( m50_sum > close_sum ):
                 continue
         #
-        print( "====> Matched the filter conditions" )
+        print( f"====> Matched the filter conditions ( {matched_index} )" )
+        matched_index = matched_index + 1
     #
     symbol_index = symbol_index + 1
     
@@ -183,7 +191,7 @@ for i in range( 0, stock_length ):
 ##################################################
 row_index = 1
 ind = 0
-vertical_spacing_value = 0.009#(float)(1/ (len(temp_stock_symbols) * 2 - 1 ))
+vertical_spacing_value = 0.0095#(float)(1/ (len(temp_stock_symbols) * num_traces - 1 )) #0.009
 print(f"--Spacing = {vertical_spacing_value}")
 print(f"--Started to get earnings")
 #########################
@@ -193,7 +201,7 @@ earnings_history_list = [pd.DataFrame() for s in stocks]
 def get_earnings_history( stock_ticker, result, index):
     if no_earnings_history: 
         return
-    se = stock_utils.StockEarnings(stock_ticker, 12)
+    se = stock_utils.StockEarnings(stock_ticker, 16)
     try:
         result[index] = se.get_earnings_dates()
     except Exception as e: 
