@@ -6,4 +6,4 @@
 
 [Out]
 1. Drop more than 8% in one day
-2. Drop 2% in consecutive 2 days with unusual volumes
+2. Drop 2% in consecutive 2 days  with unusual volumes
