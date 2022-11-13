@@ -1,5 +1,5 @@
 202211014:
-(USD) : SLB,PFG,PSX,PCAR,CVX,ALB
+(USD) : SLB,PFG,PSX,PCAR,CVX,ALB,GILD
          1114   
 SLB:
 PFG:
@@ -7,6 +7,7 @@ PSX:
 PCAR:
 CVX:
 ALB:
+GILD: 
 
 (CAD) : ATD.TO,QSR.TO
          1114   
