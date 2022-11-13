@@ -14,8 +14,11 @@ class StockEarnings:
         self.__data = yf.Ticker( self.__choice )
         if self.__data.earnings.empty:
             return pd.DataFrame()
-        e = self.__data.earnings_dates[:self.__num]
-        time.sleep(8)
+        for i in range( 0, 5 ):
+            e = self.__data.earnings_dates[:self.__num]
+            if not e.empty:
+                break
+        #time.sleep(10)
         return e
         #
         #print (e)
