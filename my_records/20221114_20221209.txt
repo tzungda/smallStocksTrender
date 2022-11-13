@@ -8,6 +8,7 @@ PCAR:
 CVX:
 ALB:
 
-(CAD) : ATD.TO
+(CAD) : ATD.TO,QSR.TO
          1114   
 ATD.TO:     
+QSR.TO:
