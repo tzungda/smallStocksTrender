@@ -1,0 +1,13 @@
+202211014:
+(USD) : SLB,PFG,PSX,PCAR,CVX,ALB
+         1114   - 1111 - 1118
+SLB:
+PFG:
+PSX:
+PCAR:
+CVX:
+ALB:
+
+(CAD) : ATD.TO
+         1114   - 1111 - 1118
+ATD.TO:     
