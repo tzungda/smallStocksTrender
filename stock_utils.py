@@ -12,7 +12,7 @@ class StockEarnings:
     def get_earnings_dates( self ):
         #self.__choice = input("Write a stock symbol: ")
         self.__data = yf.Ticker( self.__choice )
-        if self.__data.earnings.empty:
+        if self.__data.quarterly_earnings.empty:
             return pd.DataFrame()
         for i in range( 0, 5 ):
             e = self.__data.earnings_dates[:self.__num]
@@ -22,4 +22,3 @@ class StockEarnings:
         return e
         #
         #print (e)
-
