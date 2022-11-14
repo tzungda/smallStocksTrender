@@ -3,7 +3,8 @@
 2. Generally high than 50-MA and 200-MA in recent 60 days
 3. Earnings don't go south in past 4 periods
 4. Double check sectors and its leaders
+5. Wait for and check the VCP progression: drop 10% from high then raise then drop 5% until it looks stablized 
 
 [Out]
-1. Drop more than 8% in one day
-2. Drop 2% in consecutive 2 days  with unusual volumes
+1. Drop more than 10% in one day
+2. Drop 5% in consecutive 2 days  with unusual volumes
