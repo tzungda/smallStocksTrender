@@ -1,15 +1,13 @@
 202211014:
 (USD) : SLB,PFG,PSX,PCAR,CVX,ALB,GILD
-         1114   
-SLB:
-PFG:
-PSX:
-PCAR:
-CVX:
-ALB:
-GILD: 
+         11/14   
+SLB:     54.89
+PFG:     95.54
+PCAR:    102.27
+ALB:     324.01
+GILD:    81.38
 
 (CAD) : ATD.TO,QSR.TO
-         1114   
-ATD.TO:     
-QSR.TO:
+         11/14   
+ATD.TO:  62.9   
+SJ.TO:   46.41
