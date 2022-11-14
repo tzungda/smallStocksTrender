@@ -1,3 +1,5 @@
+Note: Other than SJ.TO, the consensus EPSs of the others are going up
+
 202211014:
 (USD) : SLB,PFG,PSX,PCAR,CVX,ALB,GILD
          11/14   
