@@ -133,7 +133,7 @@ for stock_symbol in temp_stock_symbols:
             continue
             
         # for the new high
-        if ( data['Close'].values[-1] < data['Close'].values.max() ):
+        if ( ( len( data['Close'].values ) > 10 ) and ( data['Close'].values[-60:].mean() < data['Close'].values[:60].max() ) ):
             continue
         
         close_sum_second = math.fsum( list( data['Close'].values[-compare_num_days_half:] ) )
