@@ -4,6 +4,7 @@
 3. Earnings don't go south in past 4 periods
 4. Double check sectors and its leaders
 5. Wait for and check the VCP progression: drop 5%~10% from high then raise then drop 5% for 2~4 times until it looks stablized 
+6. Check if the volume is contracting. Try to find the one with the volume lower than the 50-day average
  
 [Out]
 1. Drop more than 10% in one day
