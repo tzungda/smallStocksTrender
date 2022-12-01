@@ -7,5 +7,5 @@
 6. Check if the volume is contracting. Try to find the one with the volume lower than the 50-day average
  
 [Out]
-1. Drop more than 10% in one day
-2. Drop 5% in consecutive 2 days  with unusual volumes
+1. Drop more than 10% 
+2. Drop 5% in consecutive 2 days 
